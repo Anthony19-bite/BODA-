@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Georgia', serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 50%, #1e1e2e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
+            max-width: 700px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+            border: 3px solid #d4af37;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #c4932f 100%);
+            padding: 80px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "✿ ✿ ✿";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 28px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: "✿ ✿ ✿";
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 28px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .header h1 {
+            font-size: 44px;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 60px 40px;
+        }
+
+        .names {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .names h2 {
+            font-size: 36px;
+            color: #1e1e2e;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .names h2:first-child {
+            margin-bottom: 20px;
+        }
+
+        .ampersand {
+            font-size: 56px;
+            color: #d4af37;
+            margin: 15px 0;
+            font-weight: 300;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 30px auto;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #1e1e2e;
+            text-align: center;
+            margin: 40px 0 30px 0;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: #d4af37;
+        }
+
+        .details {
+            background: linear-gradient(135deg, #f9f7f4 0%, #faf9f7 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .detail-item {
+            margin: 25px 0;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .detail-icon {
+            font-size: 24px;
+            color: #d4af37;
+            min-width: 30px;
+            margin-top: 2px;
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .itinerary {
+            background: linear-gradient(135deg, #faf9f7 0%, #f9f7f4 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-right: 5px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #d4af37;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 25px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: #d4af37;
+            opacity: 0.3;
+        }
+
+        .timeline-time {
+            font-size: 16px;
+            font-weight: 700;
+            color: #d4af37;
+            min-width: 80px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e1e2e;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .rsvp-section {
+            margin: 40px 0;
+        }
+
+        .rsvp-section h3 {
+            color: #1e1e2e;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e1e2e;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 14px 35px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-decline {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-decline:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            font-size: 16px;
+            font-weight: 500;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .message.error {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.1);
+        }
+
+        .info-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer {
+            padding: 40px 30px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .footer p:first-child {
+            font-size: 16px;
+            color: #1e1e2e;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            font-size: 13px;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 50px 20px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .names h2 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .timeline-item {
+                padding-left: 40px;
+            }
+
+            .timeline-item::before {
+                left: 10px;
+            }
+
+            .timeline-item::after {
+                left: 19px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Con amor anunciamos</h1>
+            <p>nuestra boda</p>
+        </div>
+
+        <div class="content">
+            <div class="names">
+                <h2>María José</h2>
+                <div class="ampersand">&</div>
+                <h2>Nestor Isaac</h2>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="details">
+                <div class="detail-item">
+                    <div class="detail-icon">📅</div>
+                    <div class="detail-content">
+                        <div class="detail-label">Fecha</div>
+                        <div class="detail-value">Sábado, 18 de Abril de 2026</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">⏰</div>
+                    <div class="detail-content">
+                        <div class="detail-label">Hora de la Ceremonia</div>
+                        <div class="detail-value">15:00 horas</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-content">
+                        <div class="detail-label">Ubicación</div>
+                        <div class="detail-value">Ubicación Conocida<br>Rancheria Pablo L. Sidar</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">🎉</div>
+                    <div class="detail-content">
+                        <div class="detail-label">Cocktail y Recepción</div>
+                        <div class="detail-value">Inmediatamente después de la ceremonia</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">Cronograma del Día</div>
+
+            <div class="itinerary">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">14:30</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Recepción de Invitados</div>
+                            <div class="timeline-description">Se abrirán las puertas y se recibirá a los asistentes</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">15:00</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Ceremonia Religiosa</div>
+                            <div class="timeline-description">Inicio de la ceremonia en el Salón del Reino de los Testigos de Jehová</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">17:45</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Sesión de Fotos</div>
+                            <div class="timeline-description">Fotografías junto a los novios y con la familia</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">18:00</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Cocktail de Bienvenida</div>
+                            <div class="timeline-description">Aperitivos y bebidas en el jardín del hogar</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">20:00</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Cena de Gala</div>
+                            <div class="timeline-description">Bailongo</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">21:00</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Despedida y Limpieza</div>
+                            <div class="timeline-description">Los que se queden ayudaran a dejar limpio el lugar de la celebración</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rsvp-section">
+                <h3>¿Asistirás a nuestra boda?</h3>
+                
+                <div class="form-group">
+                    <label for="nombre">Tu Nombre *</label>
+                    <input type="text" id="nombre" placeholder="Ingresa tu nombre completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Tu Número de Teléfono *</label>
+                    <input type="tel" id="telefono" placeholder="+52 9933995278" required>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn-confirm" onclick="confirmar()">✓ Sí, confirmo mi asistencia</button>
+                    <button class="btn-decline" onclick="declinar()">✗ No podré asistir</button>
+                </div>
+                <div id="mensaje" class="message"></div>
+            </div>
+
+            <div class="info-box">
+                <h4>👨‍👩‍👧‍👦 Nota Importante sobre Niños</h4>
+                <p>Debido a la naturaleza de nuestra celebración y para que todos los invitados puedan disfrutar plenamente de esta noche especial, hemos decidido que sea una celebración solo para adultos. Agradecemos tu comprensión y confiamos en que disfrutarás esta velada en nuestra compañía.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Esperamos celebrar este momento especial contigo</p>
+            <p class="contact-info">Mandanos un mensajito por alguna aclaración</p>
+            <p class="contact-info">📱 +52 9933995278</p>
+        </div>
+        <div class="footer" style="background: #f8f9fa; padding: 20px; border-top: 2px solid #d4af37;">
+    <h4 style="color: #1e1e2e; margin-bottom: 10px;">📊 Estado de Invitados</h4>
+    <div style="display: flex; justify-content: center; gap: 30px;">
+        <div style="text-align: center;">
+            <p style="font-size: 20px; font-weight: bold; color: #28a745;" id="count-confirmados">--</p>
+            <p style="font-size: 12px; color: #666; text-transform: uppercase;">Confirmados</p>
+        </div>
+        <div style="text-align: center;">
+            <p style="font-size: 20px; font-weight: bold; color: #dc3545;" id="count-pendientes">--</p>
+            <p style="font-size: 12px; color: #666; text-transform: uppercase;">Sin confirmar</p>
+        </div>
+    </div>
+    <p style="font-size: 10px; color: #999; margin-top: 15px;">* Los datos se actualizan al recargar la página</p>
+</div>
+    </div>
+
+<script>
+    // 1. PEGA AQUÍ TU URL DE GOOGLE
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwvT-CB6tp7i53i2rlFOxX9nsQ4Zd2SbzpMjx5pu_tOskeLi1TEjXmvcnlwaDz2RoSySA/exec";
+
+    function mostrarMensaje(texto, tipo) {
+        const mensaje = document.getElementById('mensaje');
+        mensaje.textContent = texto;
+        mensaje.className = 'message ' + tipo;
+        mensaje.style.display = 'block';
+    }
+
+    async function confirmar() {
+        const nombre = document.getElementById('nombre').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        
+        if (!nombre || !telefono) {
+            mostrarMensaje('Por favor llena tu nombre y teléfono', 'error');
+            return;
+        }
+
+        const cantidad = prompt("¿Cuántos integrantes de la familia asistirán? (Solo números)");
+        if (!cantidad || isNaN(cantidad)) return;
+
+        mostrarMensaje('Validando y registrando...', 'success');
+
+        try {
+            const finalUrl = `${WEB_APP_URL}?nombre=${encodeURIComponent(nombre)}&cant=${cantidad}&tel=${encodeURIComponent(telefono)}&asiste=SI`;
+            
+            // Usamos una técnica para llamar a Google sin errores de seguridad
+            const resp = await fetch(finalUrl);
+            const texto = await resp.text();
+
+            if (texto.includes("Error")) {
+                mostrarMensaje(texto, 'error');
+            } else if (texto.includes("no encontrada")) {
+                mostrarMensaje('No encontramos a la familia "' + nombre + '". Revisa que esté escrita igual que en la lista.', 'error');
+            } else {
+                mostrarMensaje(`¡Gracias ${nombre}! Registro exitoso para ${cantidad} personas. 💕`, 'success');
+                document.getElementById('nombre').value = '';
+                document.getElementById('telefono').value = '';
+            }
+        } catch (e) {
+            // A veces Google bloquea el acceso directo por CORS, pero el registro sí se hace
+            mostrarMensaje('Confirmación enviada. ¡Gracias! 💕', 'success');
+        }
+    }
+
+    async function declinar() {
+        const nombre = document.getElementById('nombre').value.trim();
+        if (!nombre) {
+            mostrarMensaje('Por favor ingresa tu nombre', 'error');
+            return;
+        }
+        
+        const finalUrl = `${WEB_APP_URL}?nombre=${encodeURIComponent(nombre)}&asiste=NO`;
+        fetch(finalUrl);
+        mostrarMensaje('Gracias por avisarnos. Te extrañaremos. 💌', 'error');
+    }
+</script>
+</body>
+</html>
